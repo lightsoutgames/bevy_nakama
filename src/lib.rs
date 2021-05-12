@@ -43,7 +43,7 @@ pub struct NakamaPlugin;
 
 impl Plugin for NakamaPlugin {
     fn build(&self, app: &mut bevy::prelude::AppBuilder) {
-        app.init_non_send_resource::<Option<ApiClient>>()
+        app.init_resource::<Option<NakamaConfig>>().init_non_send_resource::<Option<ApiClient>>()
             .add_system(config_changed.system())
             .add_system(tick.system());
     }
